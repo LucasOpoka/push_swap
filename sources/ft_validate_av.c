@@ -1,47 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atollst.c                                          :+:      :+:    :+:   */
+/*   ft_validate_av.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:36:40 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/10 20:50:50 by lucas            ###   ########.fr       */
+/*   Updated: 2024/06/11 14:50:52 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-t_node	*ft_atollst(char **av, int i)
+int	ft_validate_av(int ac, char **av, t_stack *a)
 {
-	int	j;
+	int	i;
+	int count;
+	int	tmp;
 
-	i--;
-	while (i > 0)
+	ac--;
+	tmp = ac;
+	count = 0;
+	while (ac > 0)
 	{
-		j = ft_strlen(av[i]) - 1;
-		while (j >= 0)
+		i = ft_strlen(av[ac]) - 1;
+		while (i >= 0 && av[ac][i] == ' ')
+			i--;
+		while (i >= 0)
 		{
-			while (j >= 0 && av[i][j] != ' ')
+			while (i >= 0 && av[ac][i] != ' ')
 			{
-				if (!ft_isdigit(av[i][j]) && av[i][j] != '-' && av[i][j] != '+')
+				if (!ft_isdigit(av[ac][i]) && av[ac][i] != '-' && av[ac][i] != '+')
 				{
 					ft_printf_fd(2, "Invalid number passed as argument\n");
 					exit (1);
 				}
-				j--;
+				i--;
 			}
-			ft_printf("%d\n", ft_atoi(&av[i][j + 1]));
-			while (j >= 0 && av[i][j] == ' ')
-				j--;
+			if (a)
+			{
+				a->arr[--a->start] = ft_atoi(&av[ac][i + 1]);
+				a->end++;
+			}
+			//ft_printf("%d\n", ft_atoi(&av[ac][i + 1]));
+			count++;
+			while (i >= 0 && av[ac][i] == ' ')
+				i--;
 		}
-		i--;
+		ac--;
 	}
-	return (0);
-}
-
-int	main(int ac, char **av)
-{
-	ft_atollst(av, ac);
-	return (0);
+	if (count < tmp)
+	{
+		ft_printf_fd(2, "Invalid number passed as argument\n");
+		exit (1);
+	}
+	return (count);
 }

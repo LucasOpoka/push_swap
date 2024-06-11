@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   circ_arr_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 14:00:53 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/11 15:02:03 by lopoka           ###   ########.fr       */
+/*   Created: 2024/06/11 14:11:24 by lopoka            #+#    #+#             */
+/*   Updated: 2024/06/11 14:20:52 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../sources/libft/libft.h"
+#include "../includes/push_swap.h"
 
-typedef struct s_stack
+void ft_print_circ_arr(t_stack *stack)
 {
-	int		*arr;
-	int		size;
-	int		start;
-	int		end;
-}	t_stack;
+	int ind;
 
-
-int	ft_validate_av(int ac, char **av, t_stack *a);
-void ft_print_circ_arr(t_stack *stack);
-void ft_sa(t_stack *a);
-
-#endif
+	ind = 0;
+	while (ind < stack->end)
+	{
+		ft_printf("Arr %d\n", stack->arr[(stack->start + ind) % stack->size]);
+		ind++;
+	}
+}

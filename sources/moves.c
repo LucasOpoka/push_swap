@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 14:00:53 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/11 15:02:03 by lopoka           ###   ########.fr       */
+/*   Created: 2024/06/11 14:51:15 by lopoka            #+#    #+#             */
+/*   Updated: 2024/06/11 15:04:47 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../sources/libft/libft.h"
+#include "../includes/push_swap.h"
 
-typedef struct s_stack
+void ft_sa(t_stack *a)
 {
-	int		*arr;
-	int		size;
-	int		start;
-	int		end;
-}	t_stack;
+	int tmp;
 
-
-int	ft_validate_av(int ac, char **av, t_stack *a);
-void ft_print_circ_arr(t_stack *stack);
-void ft_sa(t_stack *a);
-
-#endif
+	if (a->end > 1)
+	{
+		tmp = a->arr[a->start];
+		a->arr[a->start] = a->arr[(a->start + 1) % a->size];
+		a->arr[(a->start + 1) % a->size] = tmp;
+	}
+}
