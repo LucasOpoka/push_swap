@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:36:37 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/11 15:02:52 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/11 20:50:06 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -63,11 +63,21 @@ int main(int ac, char **av)
 	c.arr[0] = 2;
 	c.arr[1] = 3;
 	c.size = 10;
+	
 	ft_printf("Test\n");
-	ft_print_circ_arr(&c);
+	ft_print_circ_arr(&a);
 
-	ft_printf("Swap Test\n");
-	ft_sa(&c);
-	ft_print_circ_arr(&c);
+	ft_printf("Push B twice Test\n");
+	ft_pb(&a, &b);
+	ft_pb(&a, &b);
+	ft_pb(&a, &b);
+	ft_print_circ_arr(&b);
+	ft_rb(&b);
+	ft_rb(&b);
+	ft_rb(&b);
+	ft_print_circ_arr(&b);	
+	ft_rra(&b);
+	ft_rra(&b);
+	ft_print_circ_arr(&b);
 	return (0);
 }
