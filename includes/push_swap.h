@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:00:53 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/12 16:48:01 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/12 21:19:01 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -46,6 +46,13 @@ int		ft_find_optimal_moves(t_stack *a, t_stack *b, int i, t_nix target);
 
 //Move from A to B
 void	ft_move_to_b(t_stack *a, t_stack *b);
+void	ft_min_to_top(t_stack *a);
+
+//Sort 3
+void	ft_sort_three(t_stack *a);
+
+//Move from B to A
+void	ft_move_to_a(t_stack *a, t_stack *b);
 
 //Moves
 int		ft_rot_ind(int curr_ind, int offset, int size);

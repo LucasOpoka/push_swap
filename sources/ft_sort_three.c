@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sorted.c                                        :+:      :+:    :+:   */
+/*   ft_sort_three.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 12:47:02 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/12 21:33:03 by lopoka           ###   ########.fr       */
+/*   Created: 2024/06/12 20:14:35 by lopoka            #+#    #+#             */
+/*   Updated: 2024/06/12 20:21:03 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-int	ft_sorted(t_stack *stack)
+void	ft_sort_three(t_stack *a)
 {
-	int	i;
-	int	val;
-	int	next_val;
+	t_nix	max;
 
-	i = 1;
-	val = stack->arr[stack->start];
-
-	while (i < stack->end - 1)
-	{
-		next_val = stack->arr[ft_rot_ind(stack->start, i, stack->size)];
-		if (val > next_val)
-			return (0);
-		val = next_val;
-		i++;
-	}
-	return (1);
-}
+	max = ft_stack_max(a);
+	if (a->arr[a->start] == max.n)
+		ft_ra(a);
+	else if (a->arr[ft_rot_ind(a->start, 1, a->size)] == max.n)
+		ft_rra(a);
+	if (a->arr[a->start] > a->arr[ft_rot_ind(a->start, 1, a->size)])
+		ft_sa(a);
+}	

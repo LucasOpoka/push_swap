@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:36:37 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/12 16:48:51 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/12 21:37:41 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -52,7 +52,6 @@ int main(int ac, char **av)
 	//t_nix	num;
 
 	ft_init_stacks(&a, &b, ac, av);
-	ft_print_circ_arr(&a);
 	/*
 	ft_printf("Size = %d, start = %d, end %d\n", a.size, a.start, a.end);
 	ft_printf("Is A sorted: %d\n", ft_sorted(&a));
@@ -94,15 +93,28 @@ int main(int ac, char **av)
 	ft_rra(&b);
 	ft_print_circ_arr(&b);
 	*/
-	ft_print_circ_arr(&a);
-	ft_printf("\n");
-	ft_print_circ_arr(&b);
+
+	//ft_print_circ_arr(&a);
+	//ft_printf("\n");
+	//ft_print_circ_arr(&b);
 
 	ft_move_to_b(&a, &b);
 	
-	ft_print_circ_arr(&a);
+	//ft_print_circ_arr(&a);
+	//ft_printf("\n");
+	//ft_print_circ_arr(&b);
+
+	if (a.end == 3)
+		ft_sort_three(&a);
+	//ft_print_circ_arr(&a);
+
+	ft_move_to_a(&a, &b);
+	//ft_printf("\n");
+	//ft_print_circ_arr(&a);
+
+	ft_min_to_top(&a);
 	ft_printf("\n");
-	ft_print_circ_arr(&b);
+	ft_print_circ_arr(&a);
 
 	return (0);
 }

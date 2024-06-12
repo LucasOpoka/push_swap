@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sorted.c                                        :+:      :+:    :+:   */
+/*   ft_min_to_top.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 12:47:02 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/12 21:33:03 by lopoka           ###   ########.fr       */
+/*   Created: 2024/06/12 21:13:44 by lopoka            #+#    #+#             */
+/*   Updated: 2024/06/12 21:18:36 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-int	ft_sorted(t_stack *stack)
+void ft_min_to_top(t_stack *a)
 {
-	int	i;
-	int	val;
-	int	next_val;
+	t_nix	min;
+	int		moves;
 
-	i = 1;
-	val = stack->arr[stack->start];
-
-	while (i < stack->end - 1)
+	min = ft_stack_min(a);
+	if (min.ix < (a->end - min.ix))
 	{
-		next_val = stack->arr[ft_rot_ind(stack->start, i, stack->size)];
-		if (val > next_val)
-			return (0);
-		val = next_val;
-		i++;
+		moves = min.ix;
+		while (moves > 0)
+		{
+			ft_ra(a);
+			moves--;
+		}
 	}
-	return (1);
+	else
+	{
+		moves = a->end - min.ix;
+		while (moves > 0)
+		{
+			ft_rra(a);
+			moves--;
+		}
+	}
 }

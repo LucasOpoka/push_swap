@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:04:49 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/12 17:35:58 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/12 21:34:44 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -115,7 +115,7 @@ t_nix	ft_min_cost(t_stack *a, t_stack *b)
 		else
 			target = ft_bgst_lwr(val, b);
 		tmp = ft_find_optimal_moves(a, b, i, target);
-		ft_printf("COST for %d is %d\n", val, tmp);
+		//ft_printf("COST for %d is %d\n", val, tmp);
 		if (tmp < cost)
 		{
 			cost = tmp;
@@ -280,11 +280,11 @@ void	ft_move_to_b(t_stack *a, t_stack *b)
 {
 	t_nix lwst_cst;
 
-	if (a->end > 3)
+	if (a->end > 3 && !ft_sorted(a))
 		ft_pb(a, b);
-	if (a->end > 3)
+	if (a->end > 3 && !ft_sorted(a))
 		ft_pb(a, b);
-	while (a->end > 3)
+	while (a->end > 3 && !ft_sorted(a))
 	{
 		lwst_cst = ft_min_cost(a, b);
 		ft_push_on_budget(a, b, lwst_cst);
