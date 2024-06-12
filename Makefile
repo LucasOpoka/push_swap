@@ -6,7 +6,7 @@
 #    By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/10 12:09:14 by lopoka            #+#    #+#              #
-#    Updated: 2024/06/11 15:03:33 by lopoka           ###   ########.fr        #
+#    Updated: 2024/06/12 14:14:33 by lopoka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,15 @@ SRCS =	sources/push_swap.c \
 		sources/ft_validate_av.c \
 		sources/circ_arr_utils.c \
 		sources/moves.c \
+		sources/ft_sorted.c \
+		sources/ft_move_to_b.c \
 
 B_SRCS = sources/push_swap.c \
 		 sources/ft_validate_av.c \
 		 sources/circ_arr_utils.c \
 		 sources/moves.c \
+		 sources/ft_sorted.c \
+		 sources/ft_move_to_b.c \
 
 CC = cc
 

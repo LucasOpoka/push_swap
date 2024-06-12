@@ -6,11 +6,10 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:36:40 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/11 14:50:52 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/12 12:31:58 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 int	ft_validate_av(int ac, char **av, t_stack *a)
 {
@@ -42,7 +41,6 @@ int	ft_validate_av(int ac, char **av, t_stack *a)
 				a->arr[--a->start] = ft_atoi(&av[ac][i + 1]);
 				a->end++;
 			}
-			//ft_printf("%d\n", ft_atoi(&av[ac][i + 1]));
 			count++;
 			while (i >= 0 && av[ac][i] == ' ')
 				i--;

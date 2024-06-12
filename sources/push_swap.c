@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:36:37 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/11 20:50:06 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/12 16:48:51 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -49,13 +49,21 @@ int main(int ac, char **av)
 {
 	t_stack	a;
 	t_stack b;
-	t_stack c;
+	//t_nix	num;
 
 	ft_init_stacks(&a, &b, ac, av);
 	ft_print_circ_arr(&a);
+	/*
 	ft_printf("Size = %d, start = %d, end %d\n", a.size, a.start, a.end);
-
-
+	ft_printf("Is A sorted: %d\n", ft_sorted(&a));
+	num = ft_stack_min(&a);
+	ft_printf("Min is %d at index %d\n", num.n, num.ix);
+	num = ft_bgst_lwr(5, &a);
+	ft_printf("Biggest lower than 5 is %d at index %d\n", num.n, num.ix);
+	num = ft_stack_max(&a);
+	ft_printf("Max is %d at index %d\n", num.n, num.ix);
+	
+	t_stack c;
 	c.arr = malloc(10 * sizeof(int));
  	c.start = 9;
 	c.end = 3;
@@ -66,11 +74,17 @@ int main(int ac, char **av)
 	
 	ft_printf("Test\n");
 	ft_print_circ_arr(&a);
+	
+	ft_printf("2 x PB\n");
+	ft_pb(&a, &b);
+	ft_pb(&a, &b);
+	ft_pb(&a, &b);
+	ft_pb(&a, &b);
 
-	ft_printf("Push B twice Test\n");
-	ft_pb(&a, &b);
-	ft_pb(&a, &b);
-	ft_pb(&a, &b);
+
+	num = ft_min_cost(&a, &b);
+	ft_printf("Min cost: %d at index %d\n", num.n, num.ix);
+
 	ft_print_circ_arr(&b);
 	ft_rb(&b);
 	ft_rb(&b);
@@ -79,5 +93,16 @@ int main(int ac, char **av)
 	ft_rra(&b);
 	ft_rra(&b);
 	ft_print_circ_arr(&b);
+	*/
+	ft_print_circ_arr(&a);
+	ft_printf("\n");
+	ft_print_circ_arr(&b);
+
+	ft_move_to_b(&a, &b);
+	
+	ft_print_circ_arr(&a);
+	ft_printf("\n");
+	ft_print_circ_arr(&b);
+
 	return (0);
 }
