@@ -6,14 +6,14 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:11:24 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/11 14:20:52 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/13 15:30:19 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-void ft_print_circ_arr(t_stack *stack)
+void	ft_print_circ_arr(t_stack *stack)
 {
-	int ind;
+	int	ind;
 
 	ind = 0;
 	while (ind < stack->end)

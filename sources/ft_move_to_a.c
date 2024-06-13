@@ -6,12 +6,12 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:30:34 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/12 21:12:05 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/13 16:00:19 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-t_nix	ft_lwst_bgr(int target, t_stack *stack)
+static inline t_nix	ft_lwst_bgr(int target, t_stack *stack)
 {
 	int		i;
 	int		val;
@@ -32,13 +32,31 @@ t_nix	ft_lwst_bgr(int target, t_stack *stack)
 	return (lwst_bgr);
 }
 
+static inline void	ft_prep_a(int moves, t_stack *a, int reverse)
+{
+	if (!reverse)
+	{
+		while (moves > 0)
+		{
+			ft_ra(a);
+			moves--;
+		}
+	}
+	else
+	{
+		while (moves > 0)
+		{
+			ft_rra(a);
+			moves--;
+		}
+	}
+}
 
 void	ft_move_to_a(t_stack *a, t_stack *b)
 {
 	t_nix	target;
 	t_nix	max;
 	t_nix	min;
-	int		moves;
 
 	while (b->end != 0)
 	{
@@ -49,23 +67,9 @@ void	ft_move_to_a(t_stack *a, t_stack *b)
 		else
 			target = ft_lwst_bgr(b->arr[b->start], a);
 		if (target.ix < (a->end - target.ix))
-		{
-			moves = target.ix;
-			while (moves > 0)
-			{
-				ft_ra(a);
-				moves--;
-			}
-		}
+			ft_prep_a(target.ix, a, 0);
 		else
-		{
-			moves = a->end - target.ix;
-			while (moves > 0)
-			{
-				ft_rra(a);
-				moves--;
-			}
-		}
+			ft_prep_a(a->end - target.ix, a, 1);
 		ft_pa(a, b);
 	}
 }

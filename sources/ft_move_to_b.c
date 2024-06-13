@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:04:49 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/12 21:34:44 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/13 15:35:14 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -51,7 +51,7 @@ t_nix	ft_stack_max(t_stack *stack)
 		i++;
 	}
 	return (max);
-}	
+}
 
 t_nix	ft_stack_min(t_stack *stack)
 {
@@ -72,7 +72,7 @@ t_nix	ft_stack_min(t_stack *stack)
 		i++;
 	}
 	return (min);
-}	
+}
 
 int	ft_find_optimal_moves(t_stack *a, t_stack *b, int i, t_nix target)
 {
@@ -115,7 +115,6 @@ t_nix	ft_min_cost(t_stack *a, t_stack *b)
 		else
 			target = ft_bgst_lwr(val, b);
 		tmp = ft_find_optimal_moves(a, b, i, target);
-		//ft_printf("COST for %d is %d\n", val, tmp);
 		if (tmp < cost)
 		{
 			cost = tmp;
@@ -125,13 +124,13 @@ t_nix	ft_min_cost(t_stack *a, t_stack *b)
 		i++;
 	}
 	return (lwst_cst);
-}	
+}
 
 void	ft_rrr_case(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix target)
 {
 	int	move_a;
 	int	move_b;
-	int common;
+	int	common;
 	int	i;
 
 	move_a = a->end - lwst_cst.ix;
@@ -164,7 +163,7 @@ void	ft_rr_case(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix target)
 {
 	int	move_a;
 	int	move_b;
-	int common;
+	int	common;
 	int	i;
 
 	move_a = lwst_cst.ix;
@@ -245,12 +244,11 @@ void	ft_perform_optimal_move(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix targe
 	int	mimi;
 	int plmi;
 	int mipl;
-	
-	plpl = MAX(a->end - lwst_cst.ix, b->end - target.ix);	
+
+	plpl = MAX(a->end - lwst_cst.ix, b->end - target.ix);
 	mimi = MAX(lwst_cst.ix, target.ix);
 	plmi = (a->end - lwst_cst.ix) + target.ix;
 	mipl = lwst_cst.ix + (b->end - target.ix);
-
 	if (plpl < mimi && plpl < plmi && plpl < mipl)
 		ft_rrr_case(a, b, lwst_cst, target);
 	else if (mimi < plpl && mimi < plmi && mimi < mipl)
@@ -270,15 +268,15 @@ void	ft_push_on_budget(t_stack *a, t_stack *b, t_nix lwst_cst)
 	max = ft_stack_max(b);
 	min = ft_stack_min(b);
 	if (lwst_cst.n > max.n || lwst_cst.n < min.n)
-			target = max;
+		target = max;
 	else
 		target = ft_bgst_lwr(lwst_cst.n, b);
-	ft_perform_optimal_move(a, b,lwst_cst, target);
+	ft_perform_optimal_move(a, b, lwst_cst, target);
 }
 
 void	ft_move_to_b(t_stack *a, t_stack *b)
 {
-	t_nix lwst_cst;
+	t_nix	lwst_cst;
 
 	if (a->end > 3 && !ft_sorted(a))
 		ft_pb(a, b);

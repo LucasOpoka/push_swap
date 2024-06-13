@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:14:35 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/12 20:21:03 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/13 15:35:37 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -22,4 +22,4 @@ void	ft_sort_three(t_stack *a)
 		ft_rra(a);
 	if (a->arr[a->start] > a->arr[ft_rot_ind(a->start, 1, a->size)])
 		ft_sa(a);
-}	
+}
