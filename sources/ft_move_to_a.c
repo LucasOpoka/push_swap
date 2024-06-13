@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:30:34 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/13 16:00:19 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/13 22:35:20 by lucas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -18,11 +18,11 @@ static inline t_nix	ft_lwst_bgr(int target, t_stack *stack)
 	t_nix	lwst_bgr;
 
 	i = 0;
-	lwst_bgr.n = INT_MAX;
+	lwst_bgr.ix = -1;
 	while (i < stack->end)
 	{
 		val = stack->arr[ft_rot_ind(stack->start, i, stack->size)];
-		if (val > target && val < lwst_bgr.n)
+		if (val > target && (lwst_bgr.ix == -1 || val < lwst_bgr.n))
 		{
 			lwst_bgr.n = val;
 			lwst_bgr.ix = i;

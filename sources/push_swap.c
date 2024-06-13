@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:36:37 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/13 17:10:44 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/13 21:59:58 by lucas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -49,10 +49,12 @@ int	main(int ac, char **av)
 	t_stack	b;
 
 	ft_init_stacks(&a, &b, ac, av);
+	//ft_print_circ_arr(&a);
 	ft_move_to_b(&a, &b);
 	if (a.end == 3)
 		ft_sort_three(&a);
 	ft_move_to_a(&a, &b);
 	ft_min_to_top(&a);
+	//ft_print_circ_arr(&a);
 	return (0);
 }

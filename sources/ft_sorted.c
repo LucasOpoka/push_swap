@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:47:02 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/13 15:35:56 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/13 22:26:07 by lucas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -19,7 +19,7 @@ int	ft_sorted(t_stack *stack)
 
 	i = 1;
 	val = stack->arr[stack->start];
-	while (i < stack->end - 1)
+	while (i < stack->end)
 	{
 		next_val = stack->arr[ft_rot_ind(stack->start, i, stack->size)];
 		if (val > next_val)

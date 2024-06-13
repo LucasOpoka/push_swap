@@ -6,12 +6,11 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:00:53 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/12 21:19:01 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/13 22:34:11 by lucas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include <limits.h>
 # include "../sources/libft/libft.h"
 # define MIN(a,b) (((a)<(b))?(a):(b))
 # define MAX(a,b) (((a)>(b))?(a):(b))
@@ -29,6 +28,15 @@ typedef struct s_nix
 	int		n;
 	int		ix;
 }	t_nix;
+
+
+typedef struct s_cst
+{
+	int		i;
+	int		val;
+	int		cost;
+	int		tmp;
+}	t_cst;
 
 int	ft_validate_av(int ac, char **av, t_stack *a);
 

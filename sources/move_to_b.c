@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_to_b.c                                     :+:      :+:    :+:   */
+/*   move_to_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:04:49 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/13 15:35:14 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/13 22:33:09 by lucas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -18,11 +18,11 @@ t_nix	ft_bgst_lwr(int target, t_stack *stack)
 	t_nix	bgst_lwr;
 
 	i = 0;
-	bgst_lwr.n = INT_MIN;
+	bgst_lwr.ix = -1;
 	while (i < stack->end)
 	{
 		val = stack->arr[ft_rot_ind(stack->start, i, stack->size)];
-		if (val < target && val > bgst_lwr.n)
+		if (val < target && (bgst_lwr.ix == -1 || val > bgst_lwr.n))
 		{
 			bgst_lwr.n = val;
 			bgst_lwr.ix = i;
@@ -39,11 +39,11 @@ t_nix	ft_stack_max(t_stack *stack)
 	int		i;
 
 	i = 0;
-	max.n = INT_MIN;
+	max.ix = -1;
 	while (i < stack->end)
 	{
 		val = stack->arr[ft_rot_ind(stack->start, i, stack->size)];
-		if (val > max.n)
+		if (max.ix == -1 || val > max.n)
 		{
 			max.n = val;
 			max.ix = i;
@@ -60,11 +60,11 @@ t_nix	ft_stack_min(t_stack *stack)
 	int		i;
 
 	i = 0;
-	min.n = INT_MAX;
+	min.ix = -1;
 	while (i < stack->end)
 	{
 		val = stack->arr[ft_rot_ind(stack->start, i, stack->size)];
-		if (val < min.n)
+		if (min.ix == -1 || val < min.n)
 		{
 			min.n = val;
 			min.ix = i;
@@ -94,68 +94,66 @@ int	ft_find_optimal_moves(t_stack *a, t_stack *b, int i, t_nix target)
 
 t_nix	ft_min_cost(t_stack *a, t_stack *b)
 {
+	t_cst	c;
 	t_nix	lwst_cst;
-	t_nix	target;
 	t_nix	min;
 	t_nix	max;
-	int		i;
-	int		val;
-	int		cost;
-	int		tmp;
 
-	i = 0;
-	cost = INT_MAX;
+	c.i = 0;
+	c.cost = -1;
 	max = ft_stack_max(b);
 	min = ft_stack_min(b);
-	while (i < a->end)
+	while (c.i < a->end)
 	{
-		val = a->arr[ft_rot_ind(a->start, i, a->size)];
-		if (val > max.n || val < min.n)
-			target = max;
+		c.val = a->arr[ft_rot_ind(a->start, c.i, a->size)];
+		if (c.val > max.n || c.val < min.n)
+			c.tmp = ft_find_optimal_moves(a, b, c.i, max);
 		else
-			target = ft_bgst_lwr(val, b);
-		tmp = ft_find_optimal_moves(a, b, i, target);
-		if (tmp < cost)
+			c.tmp = ft_find_optimal_moves(a, b, c.i, ft_bgst_lwr(c.val, b));
+		if (c.cost == -1 || c.tmp < c.cost)
 		{
-			cost = tmp;
-			lwst_cst.n = val;
-			lwst_cst.ix = i;
+			c.cost = c.tmp;
+			lwst_cst.n = c.val;
+			lwst_cst.ix = c.i;
 		}
-		i++;
+		c.i++;
 	}
 	return (lwst_cst);
 }
+
+void	n_single_moves(int n, t_stack *stack, void (*f)(t_stack *))
+{
+	while (n > 0)
+	{
+		f(stack);
+		n--;
+	}
+}
+
+void	n_double_moves(int n, t_stack *a, t_stack *b, void (*f)(t_stack *a, t_stack *b))
+{
+	while (n > 0)
+	{
+		f(a, b);
+		n--;
+	}
+}
+
 
 void	ft_rrr_case(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix target)
 {
 	int	move_a;
 	int	move_b;
 	int	common;
-	int	i;
 
 	move_a = a->end - lwst_cst.ix;
 	move_b = b->end - target.ix;
 	common = MIN(move_a, move_b);
 	move_a -= common;
 	move_b -= common;
-	i = 0;
-	while (i < common)
-	{
-		ft_rrr(a, b);
-		i++;
-	}
-	i = 0;
-	while (i < move_a)
-	{
-		ft_rra(a);
-		i++;
-	}
-	i = 0;
-	while (i < move_b)
-	{
-		ft_rrb(b);
-		i++;
-	}
+	n_double_moves(common, a, b, &ft_rrr);
+	n_single_moves(move_a, a, &ft_rra);
+	n_single_moves(move_b, b, &ft_rrb);
 	ft_pb(a, b);
 }
 
@@ -164,31 +162,15 @@ void	ft_rr_case(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix target)
 	int	move_a;
 	int	move_b;
 	int	common;
-	int	i;
 
 	move_a = lwst_cst.ix;
 	move_b = target.ix;
 	common = MIN(move_a, move_b);
 	move_a -= common;
 	move_b -= common;
-	i = 0;
-	while (i < common)
-	{
-		ft_rr(a, b);
-		i++;
-	}
-	i = 0;
-	while (i < move_a)
-	{
-		ft_ra(a);
-		i++;
-	}
-	i = 0;
-	while (i < move_b)
-	{
-		ft_rb(b);
-		i++;
-	}
+	n_double_moves(common, a, b, &ft_rr);
+	n_single_moves(move_a, a, &ft_ra);
+	n_single_moves(move_b, b, &ft_rb);
 	ft_pb(a, b);
 }
 
@@ -196,22 +178,11 @@ void	ft_rra_rb_case(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix target)
 {
 	int	move_a;
 	int	move_b;
-	int	i;
 
 	move_a = a->end - lwst_cst.ix;
 	move_b = target.ix;
-	i = 0;
-	while (i < move_a)
-	{
-		ft_rra(a);
-		i++;
-	}
-	i = 0;
-	while (i < move_b)
-	{
-		ft_rb(b);
-		i++;
-	}
+	n_single_moves(move_a, a, &ft_rra);
+	n_single_moves(move_b, b, &ft_rb);
 	ft_pb(a, b);
 }
 
@@ -219,31 +190,21 @@ void	ft_ra_rrb_case(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix target)
 {
 	int	move_a;
 	int	move_b;
-	int	i;
 
 	move_a = lwst_cst.ix;
 	move_b = b->end - target.ix;
-	i = 0;
-	while (i < move_a)
-	{
-		ft_ra(a);
-		i++;
-	}
-	i = 0;
-	while (i < move_b)
-	{
-		ft_rrb(b);
-		i++;
-	}
+	n_single_moves(move_a, a, &ft_ra);
+	n_single_moves(move_b, b, &ft_rrb);
 	ft_pb(a, b);
 }
 
-void	ft_perform_optimal_move(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix target)
+void	ft_perform_optimal_move(t_stack *a, t_stack *b,
+			t_nix lwst_cst, t_nix target)
 {
 	int	plpl;
 	int	mimi;
-	int plmi;
-	int mipl;
+	int	plmi;
+	int	mipl;
 
 	plpl = MAX(a->end - lwst_cst.ix, b->end - target.ix);
 	mimi = MAX(lwst_cst.ix, target.ix);
