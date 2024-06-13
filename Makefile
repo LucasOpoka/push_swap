@@ -6,24 +6,29 @@
 #    By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/10 12:09:14 by lopoka            #+#    #+#              #
-#    Updated: 2024/06/12 21:20:03 by lopoka           ###   ########.fr        #
+#    Updated: 2024/06/13 16:33:32 by lopoka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRCS =	sources/push_swap.c \
-		sources/ft_validate_av.c \
+		sources/validate_av.c \
 		sources/circ_arr_utils.c \
-		sources/moves.c \
 		sources/ft_sorted.c \
 		sources/ft_move_to_b.c \
 		sources/ft_sort_three.c \
 		sources/ft_move_to_a.c \
 		sources/ft_min_to_top.c \
+		sources/push_moves.c \
+		sources/swap_moves.c \
+		sources/rotate_moves.c \
+		sources/rev_rotate_moves.c \
+
+
 
 B_SRCS = sources/push_swap.c \
-		 sources/ft_validate_av.c \
+		 sources/validate_av.c \
 		 sources/circ_arr_utils.c \
 		 sources/moves.c \
 		 sources/ft_sorted.c \
@@ -31,6 +36,10 @@ B_SRCS = sources/push_swap.c \
 		 sources/ft_sort_three.c \
 		 sources/ft_move_to_a.c \
 		 sources/ft_min_to_top.c \
+		 sources/push_moves.c \
+		 sources/swap_moves.c \
+		 sources/rotate_moves.c \
+		 sources/rev_rotate_moves.c \
 
 CC = cc
 
