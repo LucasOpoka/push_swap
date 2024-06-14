@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   circ_arr_utils.c                                   :+:      :+:    :+:   */
+/*   free_close.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 14:11:24 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/14 13:32:42 by lopoka           ###   ########.fr       */
+/*   Created: 2024/06/14 13:01:57 by lopoka            #+#    #+#             */
+/*   Updated: 2024/06/14 13:17:41 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-void	ft_print_circ_arr(t_stack *stack)
+void	ft_free(t_stack *a, t_stack *b)
 {
-	int	ind;
+	if (a->arr)
+		free(a->arr);
+	if (b->arr)
+		free(b->arr);
+}
 
-	ind = 0;
-	while (ind < stack->end)
-	{
-		ft_printf("Arr %d\n", stack->arr[(stack->start + ind) % stack->size]);
-		ind++;
-	}
+void	ft_exit(void)
+{
+	ft_printf_fd(2, "Error\n");
+	exit (1);
 }

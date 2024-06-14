@@ -6,7 +6,7 @@
 #    By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/10 12:09:14 by lopoka            #+#    #+#              #
-#    Updated: 2024/06/13 20:09:32 by lucas            ###   ########.fr        #
+#    Updated: 2024/06/14 13:54:40 by lopoka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,31 +15,36 @@ NAME = push_swap
 SRCS =	sources/push_swap.c \
 		sources/validate_av.c \
 		sources/circ_arr_utils.c \
-		sources/ft_sorted.c \
-		sources/move_to_b.c \
+		sources/push_to_a.c \
+		sources/push_to_b.c \
 		sources/ft_sort_three.c \
-		sources/ft_move_to_a.c \
 		sources/ft_min_to_top.c \
+		sources/stack_min_max_bl_lb_sorted.c \
+		sources/move_cases.c \
+		sources/perform_moves.c \
 		sources/push_moves.c \
 		sources/swap_moves.c \
 		sources/rotate_moves.c \
 		sources/rev_rotate_moves.c \
-
-
-
+		sources/free_close.c \
+		sources/swap_atoi.c \
+				
 B_SRCS = sources/push_swap.c \
 		 sources/validate_av.c \
 		 sources/circ_arr_utils.c \
-		 sources/moves.c \
-		 sources/ft_sorted.c \
-		 sources/move_to_b.c \
+		 sources/push_to_a.c \
+		 sources/push_to_b.c \
 		 sources/ft_sort_three.c \
-		 sources/ft_move_to_a.c \
 		 sources/ft_min_to_top.c \
+		 sources/stack_min_max_bl_lb_sorted.c \
+		 sources/move_cases.c \
+		 sources/perform_moves.c \
 		 sources/push_moves.c \
 		 sources/swap_moves.c \
 		 sources/rotate_moves.c \
 		 sources/rev_rotate_moves.c \
+		 sources/free_close.c \
+		 sources/swap_atoi.c \
 
 CC = cc
 

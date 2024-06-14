@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sorted.c                                        :+:      :+:    :+:   */
+/*   perform_moves.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 12:47:02 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/13 22:26:07 by lucas            ###   ########.fr       */
+/*   Created: 2024/06/14 12:03:33 by lopoka            #+#    #+#             */
+/*   Updated: 2024/06/14 12:05:28 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-int	ft_sorted(t_stack *stack)
+void	n_single_moves(int n, t_stack *stack, void (*f)(t_stack *))
 {
-	int	i;
-	int	val;
-	int	next_val;
-
-	i = 1;
-	val = stack->arr[stack->start];
-	while (i < stack->end)
+	while (n > 0)
 	{
-		next_val = stack->arr[ft_rot_ind(stack->start, i, stack->size)];
-		if (val > next_val)
-			return (0);
-		val = next_val;
-		i++;
+		f(stack);
+		n--;
 	}
-	return (1);
+}
+
+void	n_double_moves(int n, t_stack *a, t_stack *b,
+			void (*f)(t_stack *a, t_stack *b))
+{
+	while (n > 0)
+	{
+		f(a, b);
+		n--;
+	}
 }

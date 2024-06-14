@@ -6,36 +6,37 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:36:40 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/13 17:11:12 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/14 15:40:57 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-static inline void	ft_exit(void)
-{
-	ft_printf_fd(2, "Error\n");
-	exit (1);
-}
-
 static inline void	ft_stack_add_num(int i, int ac, char **av, t_stack *a)
 {
-	a->arr[--a->start] = ft_atoi(&av[ac][i + 1]);
+	a->arr[--a->start] = ft_swap_atoi(&av[ac][i + 1], a);
 	a->end++;
 }
 
 static inline int	ft_skip_whitespaces(int i, int ac, char **av)
 {
-	while (i >= 0 && av[ac][i] == ' ')
+	while (i >= 0 && (av[ac][i] == ' ' || (av[ac][i] >= '\t' && av[ac][i] <= '\r')))
 		i--;
 	return (i);
 }
 
 static inline int	ft_get_num_start(int i, int ac, char **av)
 {
+	int	has_digit;
+
+	has_digit = 0;
 	while (i >= 0 && av[ac][i] != ' ')
 	{
 		if (!ft_isdigit(av[ac][i]) && av[ac][i] != '-' && av[ac][i] != '+')
 			ft_exit();
+		if (!has_digit && (av[ac][i] == '-' || av[ac][i] == '+'))
+			ft_exit();
+		if (ft_isdigit(av[ac][i]))
+			has_digit = 1;
 		i--;
 	}
 	return (i);

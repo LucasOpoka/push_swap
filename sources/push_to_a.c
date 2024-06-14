@@ -1,36 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_to_a.c                                     :+:      :+:    :+:   */
+/*   push_to_a.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:30:34 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/13 22:35:20 by lucas            ###   ########.fr       */
+/*   Updated: 2024/06/14 12:13:51 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
-
-static inline t_nix	ft_lwst_bgr(int target, t_stack *stack)
-{
-	int		i;
-	int		val;
-	t_nix	lwst_bgr;
-
-	i = 0;
-	lwst_bgr.ix = -1;
-	while (i < stack->end)
-	{
-		val = stack->arr[ft_rot_ind(stack->start, i, stack->size)];
-		if (val > target && (lwst_bgr.ix == -1 || val < lwst_bgr.n))
-		{
-			lwst_bgr.n = val;
-			lwst_bgr.ix = i;
-		}
-		i++;
-	}
-	return (lwst_bgr);
-}
 
 static inline void	ft_prep_a(int moves, t_stack *a, int reverse)
 {
@@ -52,7 +31,7 @@ static inline void	ft_prep_a(int moves, t_stack *a, int reverse)
 	}
 }
 
-void	ft_move_to_a(t_stack *a, t_stack *b)
+void	ft_push_to_a(t_stack *a, t_stack *b)
 {
 	t_nix	target;
 	t_nix	max;

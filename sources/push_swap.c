@@ -6,40 +6,57 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:36:37 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/13 21:59:58 by lucas            ###   ########.fr       */
+/*   Updated: 2024/06/14 15:54:34 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-void	ft_fill_a(t_stack *a, int ac, char **av)
+void	ft_check_dups(t_stack *a)
 {
-	ft_validate_av(ac, av, a);
+	int	i;
+	int j;
+
+	i = 0;
+	while (i < a->end)
+	{
+		j = i + 1;
+		while (j < a->end)
+		{
+			if (a->arr[ft_rot_ind(a->start, i, a->size)]
+					== a->arr[ft_rot_ind(a->start, j, a->size)])
+			{
+				free(a->arr);
+				ft_exit();
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
-void	ft_init_stacks(t_stack *a, t_stack *b, int ac, char **av)
+void	ft_init_one_stack(int count, t_stack *stack)
+{
+	stack->start = count;
+	stack->end = 0;
+	stack->size = count;
+	stack->arr = (int *) malloc(count * sizeof(int));
+}
+
+void	ft_init_both_stacks(t_stack *a, t_stack *b, int ac, char **av)
 {
 	int	count;
 
 	count = ft_validate_av(ac, av, 0);
-	a->start = count;
-	a->end = 0;
-	a->size = count;
-	a->arr = (int *) malloc(count * sizeof(int));
+	ft_init_one_stack(count, a);
 	if (!a->arr)
-	{
-		ft_printf_fd(2, "Stack allocation failed\n");
-		exit (1);
-	}
-	ft_fill_a(a, ac, av);
-	b->start = count;
-	b->end = 0;
-	b->size = count;
-	b->arr = (int *) malloc(count * sizeof(int));
+		ft_exit();
+	ft_validate_av(ac, av, a);
+	ft_check_dups(a);
+	ft_init_one_stack(count, b);
 	if (!b->arr)
 	{
-		ft_printf_fd(2, "Stack allocation failed\n");
-		free(a->arr);
-		exit (1);
+		ft_free(a, b);
+		ft_exit();
 	}
 }
 
@@ -48,13 +65,12 @@ int	main(int ac, char **av)
 	t_stack	a;
 	t_stack	b;
 
-	ft_init_stacks(&a, &b, ac, av);
-	//ft_print_circ_arr(&a);
-	ft_move_to_b(&a, &b);
+	ft_init_both_stacks(&a, &b, ac, av);
+	ft_push_to_b(&a, &b);
 	if (a.end == 3)
 		ft_sort_three(&a);
-	ft_move_to_a(&a, &b);
+	ft_push_to_a(&a, &b);
 	ft_min_to_top(&a);
-	//ft_print_circ_arr(&a);
+	ft_free(&a, &b);
 	return (0);
 }
