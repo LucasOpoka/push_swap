@@ -6,7 +6,7 @@
 #    By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/10 12:09:14 by lopoka            #+#    #+#              #
-#    Updated: 2024/06/14 13:54:40 by lopoka           ###   ########.fr        #
+#    Updated: 2024/06/15 13:17:29 by lopoka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRCS =	sources/push_swap.c \
 		sources/rev_rotate_moves.c \
 		sources/free_close.c \
 		sources/swap_atoi.c \
+		sources/min_max.c \
+		sources/is_stack_sorted.c \
 				
 B_SRCS = sources/push_swap.c \
 		 sources/validate_av.c \
@@ -45,6 +47,8 @@ B_SRCS = sources/push_swap.c \
 		 sources/rev_rotate_moves.c \
 		 sources/free_close.c \
 		 sources/swap_atoi.c \
+		 sources/min_max.c \
+		 sources/is_stack_sorted.c \
 
 CC = cc
 

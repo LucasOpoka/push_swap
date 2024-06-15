@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:04:49 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/14 12:13:05 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/15 16:11:11 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -16,8 +16,8 @@ int	ft_find_optimal_moves(t_stack *a, t_stack *b, int i, t_nix target)
 	int	cost;
 	int	tmp;
 
-	cost = MAX(i, target.ix);
-	tmp = MAX(a->end - i, b->end - target.ix);
+	cost = ft_max(i, target.ix);
+	tmp = ft_max(a->end - i, b->end - target.ix);
 	if (tmp < cost)
 		cost = tmp;
 	tmp = i + b->end - target.ix;
@@ -63,15 +63,15 @@ void	ft_perform_optimal_move(t_stack *a, t_stack *b,
 	int	plmi;
 	int	mipl;
 
-	plpl = MAX(a->end - lwst_cst.ix, b->end - target.ix);
-	mimi = MAX(lwst_cst.ix, target.ix);
+	plpl = ft_max(a->end - lwst_cst.ix, b->end - target.ix);
+	mimi = ft_max(lwst_cst.ix, target.ix);
 	plmi = (a->end - lwst_cst.ix) + target.ix;
 	mipl = lwst_cst.ix + (b->end - target.ix);
-	if (plpl < mimi && plpl < plmi && plpl < mipl)
+	if (plpl <= mimi && plpl <= plmi && plpl <= mipl)
 		ft_rrr_case(a, b, lwst_cst, target);
-	else if (mimi < plpl && mimi < plmi && mimi < mipl)
+	else if (mimi <= plpl && mimi <= plmi && mimi <= mipl)
 		ft_rr_case(a, b, lwst_cst, target);
-	else if (plmi < plpl && plmi < mimi && plmi < mipl)
+	else if (plmi <= plpl && plmi <= mimi && plmi <= mipl)
 		ft_rra_rb_case(a, b, lwst_cst, target);
 	else
 		ft_ra_rrb_case(a, b, lwst_cst, target);
@@ -96,12 +96,14 @@ void	ft_push_to_b(t_stack *a, t_stack *b)
 {
 	t_nix	lwst_cst;
 
-	if (a->end > 3 && !ft_sorted(a))
+	if (a->end > 3 && !ft_circ_sorted(a))
 		ft_pb(a, b);
-	if (a->end > 3 && !ft_sorted(a))
+	if (a->end > 3 && !ft_circ_sorted(a))
 		ft_pb(a, b);
-	while (a->end > 3 && !ft_sorted(a))
+	while (a->end > 3)
 	{
+		if ((ft_circ_sorted(a)))
+			break ;
 		lwst_cst = ft_min_cost(a, b);
 		ft_push_on_budget(a, b, lwst_cst);
 	}

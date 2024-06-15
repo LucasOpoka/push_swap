@@ -6,14 +6,14 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:00:53 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/14 13:56:46 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/15 16:12:38 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../sources/libft/libft.h"
-# define MIN(a,b) (((a)<(b))?(a):(b))
-# define MAX(a,b) (((a)>(b))?(a):(b))
+//# define MIN(a,b) (((a)<(b))?(a):(b))
+//# define MAX(a,b) (((a)>(b))?(a):(b))
 
 typedef struct s_stack
 {
@@ -28,7 +28,6 @@ typedef struct s_nix
 	int		n;
 	int		ix;
 }	t_nix;
-
 
 typedef struct s_cst
 {
@@ -55,12 +54,11 @@ t_nix	ft_stack_min(t_stack *stack);
 t_nix	ft_stack_max(t_stack *stack);
 t_nix	ft_bgst_lwr(int target, t_stack *stack);
 t_nix	ft_lwst_bgr(int target, t_stack *stack);
-int		ft_sorted(t_stack *stack);
+//int		ft_sorted(t_stack *stack);
 
 //Cost of pushing to B
 t_nix	ft_min_cost(t_stack *a, t_stack *b);
 int		ft_find_optimal_moves(t_stack *a, t_stack *b, int i, t_nix target);
-
 
 //Move cases
 void	ft_rrr_case(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix target);
@@ -92,6 +90,13 @@ void	ft_free(t_stack *a, t_stack *b);
 void	ft_exit(void);
 
 //Swap atoi
-int	ft_swap_atoi(const char *str, t_stack *a);
+int		ft_swap_atoi(const char *str, t_stack *a);
+
+//Min max
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
+
+//Testing
+int		ft_circ_sorted(t_stack *stack);
 
 #endif

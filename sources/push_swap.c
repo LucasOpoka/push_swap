@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:36:37 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/14 16:42:19 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/15 16:10:46 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -14,7 +14,7 @@
 void	ft_check_dups(t_stack *a)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i < a->end)
@@ -23,7 +23,7 @@ void	ft_check_dups(t_stack *a)
 		while (j < a->end)
 		{
 			if (a->arr[ft_rot_ind(a->start, i, a->size)]
-					== a->arr[ft_rot_ind(a->start, j, a->size)])
+				== a->arr[ft_rot_ind(a->start, j, a->size)])
 			{
 				free(a->arr);
 				ft_exit();
@@ -71,6 +71,7 @@ int	main(int ac, char **av)
 	ft_push_to_b(&a, &b);
 	if (a.end == 3)
 		ft_sort_three(&a);
+	ft_min_to_top(&a);
 	ft_push_to_a(&a, &b);
 	ft_min_to_top(&a);
 	ft_free(&a, &b);

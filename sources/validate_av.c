@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:36:40 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/14 16:08:02 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/15 12:03:42 by lucas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -19,7 +19,8 @@ static inline void	ft_stack_add_num(int i, int ac, char **av, t_stack *a)
 
 static inline int	ft_skip_whitespaces(int i, int ac, char **av)
 {
-	while (i >= 0 && (av[ac][i] == ' ' || (av[ac][i] >= '\t' && av[ac][i] <= '\r')))
+	while (i >= 0 && (av[ac][i] == ' '
+		|| (av[ac][i] >= '\t' && av[ac][i] <= '\r')))
 		i--;
 	return (i);
 }
@@ -46,10 +47,8 @@ int	ft_validate_av(int ac, char **av, t_stack *a)
 {
 	int	i;
 	int	count;
-	int	tmp;
 
 	ac--;
-	tmp = ac;
 	count = 0;
 	while (ac > 0)
 	{
@@ -65,7 +64,7 @@ int	ft_validate_av(int ac, char **av, t_stack *a)
 		}
 		ac--;
 	}
-	if (count < tmp)
-		ft_exit();
+	if (count == 0)
+		exit(0);
 	return (count);
 }

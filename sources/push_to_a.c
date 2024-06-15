@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:30:34 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/14 12:13:51 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/15 15:54:16 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -41,7 +41,7 @@ void	ft_push_to_a(t_stack *a, t_stack *b)
 	{
 		max = ft_stack_max(a);
 		min = ft_stack_min(a);
-		if (b->arr[b->start] > max.n || b->arr[b->start] < min.n)
+		if (b->arr[b->start] > max.n)
 			target = min;
 		else
 			target = ft_lwst_bgr(b->arr[b->start], a);
