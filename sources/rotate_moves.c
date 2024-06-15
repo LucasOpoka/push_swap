@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:13:25 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/13 16:14:27 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/15 19:51:15 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -23,7 +23,9 @@ void	ft_ra(t_stack *a)
 		new_last_ind = ft_rot_ind(a->start, a->end - 1, a->size);
 		a->arr[new_last_ind] = tmp;
 	}
-	ft_printf("ra\n");
+	if (!a->test)
+		ft_printf("ra\n");
+	a->operations++;
 }
 
 void	ft_rb(t_stack *b)
@@ -38,7 +40,9 @@ void	ft_rb(t_stack *b)
 		new_last_ind = ft_rot_ind(b->start, b->end - 1, b->size);
 		b->arr[new_last_ind] = tmp;
 	}
-	ft_printf("rb\n");
+	if (!b->test)
+		ft_printf("rb\n");
+	b->operations++;
 }
 
 void	ft_rr(t_stack *a, t_stack *b)
@@ -60,5 +64,7 @@ void	ft_rr(t_stack *a, t_stack *b)
 		new_last_ind = ft_rot_ind(b->start, b->end - 1, b->size);
 		b->arr[new_last_ind] = tmp;
 	}
-	ft_printf("rr\n");
+	if (!a->test)
+		ft_printf("rr\n");
+	a->operations++;
 }

@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:05:25 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/13 16:06:14 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/15 21:30:15 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -28,7 +28,9 @@ void	ft_sa(t_stack *a)
 		a->arr[a->start] = a->arr[next_ind];
 		a->arr[next_ind] = tmp;
 	}
-	ft_printf("sa\n");
+	if (!a->test)
+		ft_printf("sa\n");
+	a->operations++;
 }
 
 void	ft_sb(t_stack *b)
@@ -43,7 +45,9 @@ void	ft_sb(t_stack *b)
 		b->arr[b->start] = b->arr[next_ind];
 		b->arr[next_ind] = tmp;
 	}
-	ft_printf("sb\n");
+	if (!b->test)
+		ft_printf("sb\n");
+	b->operations++;
 }
 
 void	ft_ss(t_stack *a, t_stack *b)
@@ -65,5 +69,7 @@ void	ft_ss(t_stack *a, t_stack *b)
 		b->arr[b->start] = b->arr[next_ind];
 		b->arr[next_ind] = tmp;
 	}
-	ft_printf("ss\n");
+	if (!a->test)
+		ft_printf("ss\n");
+	a->operations++;
 }

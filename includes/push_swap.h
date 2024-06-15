@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:00:53 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/15 16:12:38 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/15 19:48:39 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -21,6 +21,8 @@ typedef struct s_stack
 	int		size;
 	int		start;
 	int		end;
+	int		operations;
+	int		test;
 }	t_stack;
 
 typedef struct s_nix
