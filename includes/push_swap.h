@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:00:53 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/16 20:56:55 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/16 21:35:01 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -55,14 +55,12 @@ void	ft_push_to_b(t_stack *a, t_stack *b);
 void	ft_sort_three(t_stack *a, t_stack *b);
 void	ft_min_to_top(t_stack *a, t_stack *b);
 
-void	ft_print_circ_arr(t_stack *stack);
-
 //Stack min max bgst_lwr lwst_bgr sorted
 t_nix	ft_stack_min(t_stack *stack);
 t_nix	ft_stack_max(t_stack *stack);
 t_nix	ft_bgst_lwr(int target, t_stack *stack);
 t_nix	ft_lwst_bgr(int target, t_stack *stack);
-//int		ft_sorted(t_stack *stack);
+int		ft_circ_sorted(t_stack *stack);
 
 //Cost of pushing to B
 t_nix	ft_min_cost(t_stack *a, t_stack *b);
@@ -104,9 +102,6 @@ int		ft_swap_atoi(const char *str, t_stack *a);
 //Min max
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
-
-//Testing
-int		ft_circ_sorted(t_stack *stack);
 
 //Handle commands
 void	ft_add_cmnd(t_stack *a, t_stack *b, char *str);

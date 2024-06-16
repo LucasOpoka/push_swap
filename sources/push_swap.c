@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:36:37 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/16 21:05:39 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/16 21:31:08 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -29,8 +29,8 @@ static inline void	ft_sort_a(int i, int target, int ac, char **av)
 	t_stack	b;
 
 	ft_init_both_stacks(&a, &b, ac, av);
-	if (a.size != 500 || (a.size == 500 && a.cmnd_count <= target)
-		|| (i + 1 == a.size))
+	ft_sort_a_sub(i, &a, &b);
+	if (a.size != 500 || (a.size == 500 && a.cmnd_count <= target))
 	{
 		ft_print_cmnd(&a);
 		ft_free(&a, &b);

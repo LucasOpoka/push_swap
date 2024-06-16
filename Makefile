@@ -6,7 +6,7 @@
 #    By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/10 12:09:14 by lopoka            #+#    #+#              #
-#    Updated: 2024/06/16 20:58:32 by lopoka           ###   ########.fr        #
+#    Updated: 2024/06/16 21:35:24 by lopoka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME = push_swap
 
 SRCS =	sources/push_swap.c \
 		sources/validate_av.c \
-		sources/circ_arr_utils.c \
 		sources/push_to_a.c \
 		sources/push_to_b.c \
 		sources/sort_three.c \
@@ -36,7 +35,6 @@ SRCS =	sources/push_swap.c \
 				
 B_SRCS = sources/push_swap.c \
 		 sources/validate_av.c \
-		 sources/circ_arr_utils.c \
 		 sources/push_to_a.c \
 		 sources/push_to_b.c \
 		 sources/ft_sort_three.c \
