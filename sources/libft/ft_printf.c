@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 18:27:13 by lopoka            #+#    #+#             */
-/*   Updated: 2024/05/17 09:55:16 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/16 09:43:56 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -34,7 +34,7 @@ static inline void	ft_prnt_f(t_printf *stc, char f, va_list *arg)
 	stc->i += 1;
 }
 
-static inline void	ft_init_printf_struct(t_printf *stc)
+void	ft_init_printf_struct(t_printf *stc)
 {
 	stc->i = 0;
 	stc->index = 0;

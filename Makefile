@@ -6,7 +6,7 @@
 #    By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/10 12:09:14 by lopoka            #+#    #+#              #
-#    Updated: 2024/06/15 13:17:29 by lopoka           ###   ########.fr        #
+#    Updated: 2024/06/16 11:52:21 by lopoka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS =	sources/push_swap.c \
 		sources/swap_atoi.c \
 		sources/min_max.c \
 		sources/is_stack_sorted.c \
+		sources/add_cmnd.c \
 				
 B_SRCS = sources/push_swap.c \
 		 sources/validate_av.c \
@@ -49,6 +50,7 @@ B_SRCS = sources/push_swap.c \
 		 sources/swap_atoi.c \
 		 sources/min_max.c \
 		 sources/is_stack_sorted.c \
+		 sources/add_cmnd.c \
 
 CC = cc
 

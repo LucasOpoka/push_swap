@@ -6,23 +6,21 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:00:53 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/15 19:48:39 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/16 12:44:08 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../sources/libft/libft.h"
-//# define MIN(a,b) (((a)<(b))?(a):(b))
-//# define MAX(a,b) (((a)>(b))?(a):(b))
 
 typedef struct s_stack
 {
-	int		*arr;
-	int		size;
-	int		start;
-	int		end;
-	int		operations;
-	int		test;
+	int			*arr;
+	int			size;
+	int			start;
+	int			end;
+	int			cmnd_count;
+	t_printf	cmnd;
 }	t_stack;
 
 typedef struct s_nix
@@ -46,8 +44,8 @@ typedef struct s_cst
 int		ft_validate_av(int ac, char **av, t_stack *a);
 void	ft_push_to_a(t_stack *a, t_stack *b);
 void	ft_push_to_b(t_stack *a, t_stack *b);
-void	ft_sort_three(t_stack *a);
-void	ft_min_to_top(t_stack *a);
+void	ft_sort_three(t_stack *a, t_stack *b);
+void	ft_min_to_top(t_stack *a, t_stack *b);
 
 void	ft_print_circ_arr(t_stack *stack);
 
@@ -69,22 +67,23 @@ void	ft_rra_rb_case(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix target);
 void	ft_ra_rrb_case(t_stack *a, t_stack *b, t_nix lwst_cst, t_nix target);
 
 //Perform moves
-void	n_single_moves(int n, t_stack *stack, void (*f)(t_stack *));
-void	n_double_moves(int n, t_stack *a, t_stack *b,
+void	ft_n_single_moves(int n, t_stack *a, t_stack *b,
+			void (*f)(t_stack *a, t_stack *b));
+void	ft_n_double_moves(int n, t_stack *a, t_stack *b,
 			void (*f)(t_stack *a, t_stack *b));
 
 //Moves
 int		ft_rot_ind(int curr_ind, int offset, int size);
-void	ft_sa(t_stack *a);
-void	ft_sb(t_stack *b);
+void	ft_sa(t_stack *a, t_stack *b);
+void	ft_sb(t_stack *a, t_stack *b);
 void	ft_ss(t_stack *a, t_stack *b);
 void	ft_pa(t_stack *a, t_stack *b);
 void	ft_pb(t_stack *a, t_stack *b);
-void	ft_ra(t_stack *a);
-void	ft_rb(t_stack *b);
+void	ft_ra(t_stack *a, t_stack *b);
+void	ft_rb(t_stack *a, t_stack *b);
 void	ft_rr(t_stack *a, t_stack *b);
-void	ft_rra(t_stack *a);
-void	ft_rrb(t_stack *b);
+void	ft_rra(t_stack *a, t_stack *b);
+void	ft_rrb(t_stack *a, t_stack *b);
 void	ft_rrr(t_stack *a, t_stack *b);
 
 //Free and close
@@ -100,5 +99,9 @@ int		ft_max(int a, int b);
 
 //Testing
 int		ft_circ_sorted(t_stack *stack);
+
+//Handle commands
+void	ft_add_cmnd(t_stack *a, t_stack *b, char *str);
+void	ft_print_cmnd(t_stack *a);
 
 #endif

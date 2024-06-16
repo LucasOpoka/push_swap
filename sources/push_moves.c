@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:51:15 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/15 19:53:01 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/16 12:33:56 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -21,9 +21,7 @@ void	ft_pa(t_stack *a, t_stack *b)
 		a->arr[a->start] = b->arr[ft_rot_ind(b->start, -1, b->size)];
 		a->end++;
 	}
-	if (!a->test)
-		ft_printf("pa\n");
-	a->operations++;
+	ft_add_cmnd(a, b, "pa\n");
 }
 
 void	ft_pb(t_stack *a, t_stack *b)
@@ -36,7 +34,5 @@ void	ft_pb(t_stack *a, t_stack *b)
 		b->arr[b->start] = a->arr[ft_rot_ind(a->start, -1, a->size)];
 		b->end++;
 	}
-	if (!a->test)
-		ft_printf("pb\n");
-	a->operations++;
+	ft_add_cmnd(a, b, "pb\n");
 }

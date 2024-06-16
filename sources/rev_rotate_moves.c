@@ -6,12 +6,12 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:17:08 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/15 19:52:12 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/16 12:34:18 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-void	ft_rra(t_stack *a)
+void	ft_rra(t_stack *a, t_stack *b)
 {
 	int	tmp;
 
@@ -21,12 +21,10 @@ void	ft_rra(t_stack *a)
 		a->start = ft_rot_ind(a->start, -1, a->size);
 		a->arr[a->start] = tmp;
 	}
-	if (!a->test)
-		ft_printf("rra\n");
-	a->operations++;
+	ft_add_cmnd(a, b, "rra\n");
 }
 
-void	ft_rrb(t_stack *b)
+void	ft_rrb(t_stack *a, t_stack *b)
 {
 	int	tmp;
 
@@ -36,9 +34,7 @@ void	ft_rrb(t_stack *b)
 		b->start = ft_rot_ind(b->start, -1, b->size);
 		b->arr[b->start] = tmp;
 	}
-	if (!b->test)
-		ft_printf("rrb\n");
-	b->operations++;
+	ft_add_cmnd(a, b, "rrb\n");
 }
 
 void	ft_rrr(t_stack *a, t_stack *b)
@@ -57,7 +53,5 @@ void	ft_rrr(t_stack *a, t_stack *b)
 		b->start = ft_rot_ind(b->start, -1, b->size);
 		b->arr[b->start] = tmp;
 	}
-	if (!a->test)
-		ft_printf("rrr\n");
-	a->operations++;
+	ft_add_cmnd(a, b, "rrr\n");
 }

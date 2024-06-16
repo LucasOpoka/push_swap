@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   perform_moves.c                                    :+:      :+:    :+:   */
+/*   add_cmnd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 12:03:33 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/16 11:12:41 by lopoka           ###   ########.fr       */
+/*   Created: 2024/06/16 11:36:58 by lopoka            #+#    #+#             */
+/*   Updated: 2024/06/16 11:59:52 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-void	ft_n_single_moves(int n, t_stack *a, t_stack *b,
-			void (*f)(t_stack *a, t_stack *b))
+void	ft_add_cmnd(t_stack *a, t_stack *b, char *str)
 {
-	while (n > 0)
+	ft_prnt_s(&a->cmnd, str);
+	a->cmnd_count++;
+	if (a->cmnd.err)
 	{
-		f(a, b);
-		n--;
+		ft_free(a, b);
+		ft_exit();
 	}
 }
 
-void	ft_n_double_moves(int n, t_stack *a, t_stack *b,
-			void (*f)(t_stack *a, t_stack *b))
+void	ft_print_cmnd(t_stack *a)
 {
-	while (n > 0)
-	{
-		f(a, b);
-		n--;
-	}
+	write(1, a->cmnd.res, a->cmnd.index);
 }

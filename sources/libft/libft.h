@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:34:58 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/03 13:42:37 by lucas            ###   ########.fr       */
+/*   Updated: 2024/06/16 09:43:33 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /* - - - - - ft_printf - - - - -*/
 int		ft_printf(const char *s, ...);
+void	ft_init_printf_struct(t_printf *stc);
 int		ft_printf_fd(int fd, const char *s, ...);
 void	ft_prnt_c(t_printf *stc, int c);
 void	ft_prnt_s(t_printf *stc, char *str);
