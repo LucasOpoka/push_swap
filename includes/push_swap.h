@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:00:53 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/16 12:44:08 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/16 20:56:55 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -40,8 +40,16 @@ typedef struct s_cst
 	int		tmp;
 }	t_cst;
 
-//Top level operations
+//Init stacks
+void	ft_init_both_stacks(t_stack *a, t_stack *b, int ac, char **av);
+void	ft_init_stack_a(int count, t_stack *a);
+void	ft_init_stack_b(int count, t_stack *b);
+
+//Validate args
 int		ft_validate_av(int ac, char **av, t_stack *a);
+void	ft_check_dups(t_stack *a, t_stack *b);
+
+//Top level operations
 void	ft_push_to_a(t_stack *a, t_stack *b);
 void	ft_push_to_b(t_stack *a, t_stack *b);
 void	ft_sort_three(t_stack *a, t_stack *b);

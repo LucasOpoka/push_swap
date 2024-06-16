@@ -6,7 +6,7 @@
 #    By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/10 12:09:14 by lopoka            #+#    #+#              #
-#    Updated: 2024/06/16 11:52:21 by lopoka           ###   ########.fr        #
+#    Updated: 2024/06/16 20:58:32 by lopoka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SRCS =	sources/push_swap.c \
 		sources/circ_arr_utils.c \
 		sources/push_to_a.c \
 		sources/push_to_b.c \
-		sources/ft_sort_three.c \
-		sources/ft_min_to_top.c \
+		sources/sort_three.c \
+		sources/min_to_top.c \
 		sources/stack_min_max_bl_lb_sorted.c \
 		sources/move_cases.c \
 		sources/perform_moves.c \
@@ -31,6 +31,8 @@ SRCS =	sources/push_swap.c \
 		sources/min_max.c \
 		sources/is_stack_sorted.c \
 		sources/add_cmnd.c \
+		sources/init_stacks.c \
+		sources/check_dups.c \
 				
 B_SRCS = sources/push_swap.c \
 		 sources/validate_av.c \

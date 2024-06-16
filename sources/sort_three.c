@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_close.c                                       :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 13:01:57 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/16 20:45:50 by lopoka           ###   ########.fr       */
+/*   Created: 2024/06/12 20:14:35 by lopoka            #+#    #+#             */
+/*   Updated: 2024/06/16 20:49:50 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-void	ft_free(t_stack *a, t_stack *b)
+void	ft_sort_three(t_stack *a, t_stack *b)
 {
-	if (a->cmnd.res)
-		free(a->cmnd.res);
-	if (a->arr)
-		free(a->arr);
-	if (b->arr)
-		free(b->arr);
-}
+	t_nix	max;
 
-void	ft_exit(void)
-{
-	ft_printf_fd(2, "Error\n");
-	exit (1);
+	max = ft_stack_max(a);
+	if (a->arr[a->start] == max.n)
+		ft_ra(a, b);
+	else if (a->arr[ft_rot_ind(a->start, 1, a->size)] == max.n)
+		ft_rra(a, b);
+	if (a->arr[a->start] > a->arr[ft_rot_ind(a->start, 1, a->size)])
+		ft_sa(a, b);
 }
