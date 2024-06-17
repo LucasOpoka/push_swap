@@ -6,7 +6,7 @@
 #    By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/20 13:52:43 by lopoka            #+#    #+#              #
-#    Updated: 2024/06/03 13:43:25 by lucas            ###   ########.fr        #
+#    Updated: 2024/06/17 16:45:26 by lopoka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS = ft_isalpha.c \
 	   ft_tolower.c \
 	   ft_strchr.c \
 	   ft_strrchr.c \
+	   ft_strcmp.c \
 	   ft_strncmp.c \
 	   ft_memchr.c \
 	   ft_memcmp.c \

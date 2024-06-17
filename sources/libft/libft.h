@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:34:58 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/16 09:43:33 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/17 16:41:48 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *str, const char *to_find, size_t size);
 char	*ft_strstr(const char *str, const char *to_find);

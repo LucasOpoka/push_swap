@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_min_max_bl_lb_sorted.c                       :+:      :+:    :+:   */
+/*   stack_min_max_bl_lb.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 11:46:04 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/14 12:40:15 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/17 16:48:37 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -93,23 +93,4 @@ t_nix	ft_lwst_bgr(int target, t_stack *stack)
 		i++;
 	}
 	return (lwst_bgr);
-}
-
-int	ft_sorted(t_stack *stack)
-{
-	int	i;
-	int	val;
-	int	next_val;
-
-	i = 1;
-	val = stack->arr[stack->start];
-	while (i < stack->end)
-	{
-		next_val = stack->arr[ft_rot_ind(stack->start, i, stack->size)];
-		if (val > next_val)
-			return (0);
-		val = next_val;
-		i++;
-	}
-	return (1);
 }
