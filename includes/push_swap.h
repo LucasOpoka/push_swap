@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:00:53 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/16 21:35:01 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/18 18:45:47 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -97,7 +97,7 @@ void	ft_free(t_stack *a, t_stack *b);
 void	ft_exit(void);
 
 //Swap atoi
-int		ft_swap_atoi(const char *str, t_stack *a);
+int		ft_swap_atoi(const char *str);
 
 //Min max
 int		ft_min(int a, int b);

@@ -6,15 +6,21 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:36:40 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/15 12:03:42 by lucas            ###   ########.fr       */
+/*   Updated: 2024/06/18 18:45:26 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
 static inline void	ft_stack_add_num(int i, int ac, char **av, t_stack *a)
 {
-	a->arr[--a->start] = ft_swap_atoi(&av[ac][i + 1], a);
-	a->end++;
+	int	j;
+
+	j =  ft_swap_atoi(&av[ac][i + 1]);
+	if (a)
+	{
+		a->arr[--a->start] = j;
+		a->end++;
+	}
 }
 
 static inline int	ft_skip_whitespaces(int i, int ac, char **av)
@@ -57,8 +63,7 @@ int	ft_validate_av(int ac, char **av, t_stack *a)
 		while (i >= 0)
 		{
 			i = ft_get_num_start(i, ac, av);
-			if (a)
-				ft_stack_add_num(i, ac, av, a);
+			ft_stack_add_num(i, ac, av, a);
 			count++;
 			i = ft_skip_whitespaces(i, ac, av);
 		}
