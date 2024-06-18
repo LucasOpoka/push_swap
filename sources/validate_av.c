@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:36:40 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/18 18:45:26 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/18 18:48:51 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -15,7 +15,7 @@ static inline void	ft_stack_add_num(int i, int ac, char **av, t_stack *a)
 {
 	int	j;
 
-	j =  ft_swap_atoi(&av[ac][i + 1]);
+	j = ft_swap_atoi(&av[ac][i + 1]);
 	if (a)
 	{
 		a->arr[--a->start] = j;
