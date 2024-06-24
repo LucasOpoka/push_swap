@@ -6,7 +6,7 @@
 /*   By: lopoka <lopoka@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:36:40 by lopoka            #+#    #+#             */
-/*   Updated: 2024/06/18 18:48:51 by lopoka           ###   ########.fr       */
+/*   Updated: 2024/06/24 11:22:00 by lopoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -53,6 +53,7 @@ int	ft_validate_av(int ac, char **av, t_stack *a)
 {
 	int	i;
 	int	count;
+	int	temp;
 
 	ac--;
 	count = 0;
@@ -65,11 +66,17 @@ int	ft_validate_av(int ac, char **av, t_stack *a)
 			i = ft_get_num_start(i, ac, av);
 			ft_stack_add_num(i, ac, av, a);
 			count++;
+			temp = i;
 			i = ft_skip_whitespaces(i, ac, av);
+			if (i == temp)
+				ft_exit();
 		}
 		ac--;
 	}
+	//if (count == 0 && ac == 1)
+	//	ft_exit();
 	if (count == 0)
-		exit(0);
+		ft_exit();
+	//	exit(0);
 	return (count);
 }
