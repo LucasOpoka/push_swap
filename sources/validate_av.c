@@ -42,6 +42,9 @@ static inline int	ft_get_num_start(int i, int ac, char **av)
 			ft_exit();
 		if (!has_digit && (av[ac][i] == '-' || av[ac][i] == '+'))
 			ft_exit();
+		if ((av[ac][i] == '-' || av[ac][i] == '+')
+			&& i > 0 && av[ac][i - 1] != ' ')
+			ft_exit();
 		if (ft_isdigit(av[ac][i]))
 			has_digit = 1;
 		i--;
@@ -53,7 +56,6 @@ int	ft_validate_av(int ac, char **av, t_stack *a)
 {
 	int	i;
 	int	count;
-	int	temp;
 
 	ac--;
 	count = 0;
@@ -66,17 +68,11 @@ int	ft_validate_av(int ac, char **av, t_stack *a)
 			i = ft_get_num_start(i, ac, av);
 			ft_stack_add_num(i, ac, av, a);
 			count++;
-			temp = i;
 			i = ft_skip_whitespaces(i, ac, av);
-			if (i == temp)
-				ft_exit();
 		}
 		ac--;
 	}
-	//if (count == 0 && ac == 1)
-	//	ft_exit();
 	if (count == 0)
 		ft_exit();
-	//	exit(0);
 	return (count);
 }
